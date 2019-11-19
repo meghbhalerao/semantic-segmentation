@@ -22,6 +22,7 @@ Open the `train_parameters.cfg` file and change the training hyperparameters suc
 1. The training script `trainer.py` takes in 2 command line arguments : first is the path to the training `csv` file of a given fold, and the second is the path to the validation `csv` file of a given fold.
 2. `cd` into the `submission_scripts` folder. There are 5 submission scripts (one for each fold)
 3. Edit each of the submission scripts to make sure that the correct paths to the training and validation scripts is passed as an argument to `trainer.py` 
+4. Run each of the submission scripts either by `bash script_name.sh` or `qsub script_name.sh` (if you are using a SGE computing cluster)
 ###  How and where are the weights saved?
 1. The weights (models) are saved as `.pt` or `.pth` files.
 2. All the models will be saved in the folder that you specified in the `model_path` parameter in the `train_parameters.cfg` file
