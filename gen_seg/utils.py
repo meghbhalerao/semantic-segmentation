@@ -1,8 +1,4 @@
 import numpy as np
-
-
-
-
 def one_hot_nonoverlap(segmask_array):
     ed_mask = (segmask_array == 2).astype(np.uint8)
     enh_mask = (segmask_array == 4).astype(np.uint8)
