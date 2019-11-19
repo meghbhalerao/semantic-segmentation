@@ -23,5 +23,10 @@ Open the `train_parameters.cfg` file and change the training hyperparameters suc
 2. `cd` into the `submission_scripts` folder. There are 5 submission scripts (one for each fold)
 3. Edit each of the submission scripts to make sure that the correct paths to the training and validation scripts is passed as an argument to `trainer.py` 
 ###  How and where are the weights saved?
-
-
+1. The weights (models) are saved as `.pt` or `.pth` files.
+2. All the models will be saved in the folder that you specified in the `model_path` parameter in the `train_parameters.cfg` file
+3. The saved models follow is specific naming scheme
+4. Each of the models is named in the form `modXYYY.pt`
+5. `X` tells us which fold is the model from i.e. `1-5` and `YYY` tells us what is the epoch number where the best model weights were obtained.
+6. Depending on the value of the parameter `save_best` in the `train_paramters.cfg` file, `$save_best` number of models will be saved. Hence, the total number of weight files that will be saved are : `$save_best * number_of_folds`
+## Inference/Predicting Segmentation on unseen data
