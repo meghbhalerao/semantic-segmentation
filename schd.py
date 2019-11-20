@@ -1,3 +1,4 @@
+#This is the script which defines the function according to which the learning rate vries
 import numpy as np
 import math
 def cyclical_lr(stepsize, min_lr, max_lr):
