@@ -261,55 +261,50 @@ for ep in range(num_epochs):
     avg_c3_tr_loss = 0
     print("Epoch at which best training loss occurs is:", best_tr_idx)
     # Now we enter the evaluation/validation part of the epoch
-    
-    model.eval
-        
+    # Setting the model in validation/evaluation mode 
+   
+    model.eval   
     for batch_idx, (subject) in enumerate(val_loader):
         with torch.no_grad():
             image = subject['image']
             mask = subject['gt']
             image, mask = image.cuda(), mask.cuda()
             output = model(image.float())
-            #Computing the enhancing tumor dice
+            #Computing the enhancing tumor loss
             loss_c1 = dice_loss(output[:,0,:,:,:].double(),mask[:,0,:,:,:].double())
             loss_c1 = loss_c1.cpu().data.item()
             total_c1_val_loss+=loss_c1
             avg_c1_val_loss = total_c1_val_loss/(batch_idx + 1)
-            #Computing the tumor core dice
+            #Computing the tumor core loss
             loss_c2 =  (raw_score(output[:,1,:,:,:].double(), mask[:,1,:,:,:].double()) + raw_score(output[:,0,:,:,:].double(), mask[:,0,:,:,:].double()))/(torch.sum(output[:,1,:,:,:].double() + mask[:,1,:,:,:].double()) + torch.sum(output[:,0,:,:,:].double() + mask[:,0,:,:,:].double()))
             loss_c2 = 1 - loss_c2.cpu().data.item()
             total_c2_val_loss+=loss_c2
             avg_c2_val_loss = total_c2_val_loss/(batch_idx + 1)
-            #Computing the whole tumor dice 
-
+            #Computing the whole tumor loss 
             loss_c3 =  (raw_score(output[:,1,:,:,:].double(), mask[:,1,:,:,:].double()) + raw_score(output[:,0,:,:,:].double(), mask[:,0,:,:,:].double()) + raw_score(output[:,2,:,:,:].double(), mask[:,2,:,:,:].double()))/(torch.sum(output[:,1,:,:,:].double() + mask[:,1,:,:,:].double()) + torch.sum(output[:,0,:,:,:].double() + mask[:,0,:,:,:].double()) + torch.sum(output[:,2,:,:,:].double() + mask[:,2,:,:,:].double()))
-
-
             loss_c3 = 1 - loss_c3.cpu().data.item()
             total_c3_val_loss+=loss_c3
             avg_c3_val_loss = total_c3_val_loss/(batch_idx + 1)
 
+            #Calculating the average validation loss
             avg_val_loss = (avg_c1_val_loss + avg_c2_val_loss + avg_c3_val_loss)/3
 
-
+        # Printing some information after a log_v interval of validation examples
         if batch_idx%log_v == 0:
             print("Average Validation Loss is : ", avg_val_loss)
             print("Average Class 1 validation loss is :", avg_c1_val_loss)
             print("Average Class 2 Validation loss is :", avg_c2_val_loss)
             print("Average Class 3 Validation loss is :", avg_c3_val_loss)
-
-    
-
-  
+    # Storing some validation loss lists 
     val_c1_loss_list.append(avg_c1_val_loss)
     val_c2_loss_list.append(avg_c2_val_loss)
     val_c3_loss_list.append(avg_c3_val_loss)
-
+    # Calculating the average validation loss for all the classes
     avg_val_loss = (avg_c1_val_loss + avg_c2_val_loss + avg_c3_val_loss)/3
     val_avg_loss_list.append(avg_val_loss)
-    
+    # Saving the model according to the naming scheme in the readme file 
     torch.save(model, model_path + "mod" + a + str(ep) + ".pt")
-    
+    # Saving the best $save_best models (usually 5)
     if ep > save_best:
         keep_list = np.argsort(np.array(val_avg_loss_list))
         keep_list = keep_list[0:save_best]
@@ -342,7 +337,7 @@ for i in range(len(df)):
     d[key] = df.iloc[i]['param_value']
 
 d['best_epoch'] = save_list[0]
-
+# Storing all the metadata in a .yaml file 
 with open('store_file.yaml', 'w') as file:
     documents = yaml.dump(d, file)
 
