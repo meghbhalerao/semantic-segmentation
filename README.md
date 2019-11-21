@@ -37,4 +37,3 @@ Open the `train_parameters.cfg` file and change the training hyperparameters suc
 4. Change the `data_path` variable to the path where the preprocessed validation images are stored
 5. Change the `save_path` variable to the path of the folder
 
-
