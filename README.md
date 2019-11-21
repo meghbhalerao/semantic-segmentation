@@ -14,8 +14,8 @@ Set of instructions on how to preprocess the raw BraTS data:
 2. Create a new folder called `Original_data` and within it a folder called `train`
 3. Copy/Move all the patients from the `HGG` and `LGG` folders into the folder `train` which is mentioned above (wherever it may be located)
 
-### Preprocessing the dataset (for more details look into the `Preprocess_data` folder)
-1. `cd` into the `Preprocess_data` folder and open the `pp.py`  and change the variable `path_data` to `/$Whatever/Orignal_data/train/` as mentioned in the point number 2 above (Do not forget the `/` at the end - this is assumed to be present during file parsing)
+### Preprocessing the dataset (for more details look into the `Preprocess_Data` folder)
+1. `cd` into the `Preprocess_Data` folder and open the `pp.py`  and change the variable `path_data` to `/$Whatever/Orignal_data/train/` as mentioned in the point number 2 above (Do not forget the `/` at the end - this is assumed to be present during file parsing)
 2. Change the `path` variable to the folder where you wish to save the preprocessed data, preferably to something understandable such as `/$Whatever/Preprocessed_data/train/` (this location needs to be present **before** the script runs)
 3. Run the file `pp.py` using `python pp.py` after making sure that all the dependencies [numpy, math, nibabel, tqdm] are installed. Doing this will preprocess the raw data and write it to the location specified in `path`.
 
