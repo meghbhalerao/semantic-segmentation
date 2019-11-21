@@ -442,6 +442,25 @@ class out_conv(nn.Module):
 class InceptionModule(nn.Module):
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True,res=False,lrelu_inplace=True):
         nn.Module.__init__(self)
+        """[The Out convolution module to learn the information and use later]
+        
+        [This function will create the Learning convolutions]
+        
+        Arguments:
+            input_channels {[int]} -- [the input number of channels, in our case
+                                       the number of channels from downsample]
+            output_channels {[int]} -- [the output number of channels, will det-
+                                        -ermine the upcoming channels]
+        
+        Keyword Arguments:
+            kernel_size {number} -- [size of filter] (default: {3})
+            leakiness {number} -- [the negative leakiness] (default: {1e-2})
+            conv_bias {bool} -- [to use the bias in filters] (default: {True})
+            inst_norm_affine {bool} -- [affine use in norm] (default: {True})
+            res {bool} -- [to use residual connections] (default: {False})
+            lrelu_inplace {bool} -- [To update conv outputs with lrelu outputs] 
+                                    (default: {True})
+        """
         self.res = res
         self.output_channels = output_channels
         self.dropout_p = dropout_p
@@ -484,8 +503,28 @@ class InceptionModule(nn.Module):
         return x 
 
 class ResNetModule(nn.Module):
+    
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True,res=False,lrelu_inplace=True):
         nn.Module.__init__(self)
+        """[The Out convolution module to learn the information and use later]
+        
+        [This function will create the Learning convolutions]
+        
+        Arguments:
+            input_channels {[int]} -- [the input number of channels, in our case
+                                       the number of channels from downsample]
+            output_channels {[int]} -- [the output number of channels, will det-
+                                        -ermine the upcoming channels]
+        
+        Keyword Arguments:
+            kernel_size {number} -- [size of filter] (default: {3})
+            leakiness {number} -- [the negative leakiness] (default: {1e-2})
+            conv_bias {bool} -- [to use the bias in filters] (default: {True})
+            inst_norm_affine {bool} -- [affine use in norm] (default: {True})
+            res {bool} -- [to use residual connections] (default: {False})
+            lrelu_inplace {bool} -- [To update conv outputs with lrelu outputs] 
+                                    (default: {True})
+        """
         self.output_channels = output_channels
         self.dropout_p = dropout_p
         self.leakiness = leakiness
@@ -510,6 +549,25 @@ class IncDownsamplingModule(nn.Module):
     def __init__(self, input_channels, output_channels, leakiness=1e-2, kernel_size=1, conv_bias=True, 
                  inst_norm_affine=True, lrelu_inplace=True):
         nn.Module.__init__(self)
+        """[The Out convolution module to learn the information and use later]
+        
+        [This function will create the Learning convolutions]
+        
+        Arguments:
+            input_channels {[int]} -- [the input number of channels, in our case
+                                       the number of channels from downsample]
+            output_channels {[int]} -- [the output number of channels, will det-
+                                        -ermine the upcoming channels]
+        
+        Keyword Arguments:
+            kernel_size {number} -- [size of filter] (default: {3})
+            leakiness {number} -- [the negative leakiness] (default: {1e-2})
+            conv_bias {bool} -- [to use the bias in filters] (default: {True})
+            inst_norm_affine {bool} -- [affine use in norm] (default: {True})
+            res {bool} -- [to use residual connections] (default: {False})
+            lrelu_inplace {bool} -- [To update conv outputs with lrelu outputs] 
+                                    (default: {True})
+        """
         self.output_channels = output_channels 
         self.input_channels = input_channels
         self.leakiness = leakiness
@@ -526,6 +584,25 @@ class IncDownsamplingModule(nn.Module):
 class IncConv(nn.Module):
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True,res=False,lrelu_inplace=True):
         nn.Module.__init__(self)
+        """[The Out convolution module to learn the information and use later]
+        
+        [This function will create the Learning convolutions]
+        
+        Arguments:
+            input_channels {[int]} -- [the input number of channels, in our case
+                                       the number of channels from downsample]
+            output_channels {[int]} -- [the output number of channels, will det-
+                                        -ermine the upcoming channels]
+        
+        Keyword Arguments:
+            kernel_size {number} -- [size of filter] (default: {3})
+            leakiness {number} -- [the negative leakiness] (default: {1e-2})
+            conv_bias {bool} -- [to use the bias in filters] (default: {True})
+            inst_norm_affine {bool} -- [affine use in norm] (default: {True})
+            res {bool} -- [to use residual connections] (default: {False})
+            lrelu_inplace {bool} -- [To update conv outputs with lrelu outputs] 
+                                    (default: {True})
+        """
         self.output_channels = output_channels 
         self.leakiness = leakiness
         self.conv_bias = conv_bias 
@@ -540,6 +617,25 @@ class IncConv(nn.Module):
 class IncDropout(nn.Module):
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True, res = False, lrelu_inplace = True):
         nn.Module.__init__(self)
+        """[The Out convolution module to learn the information and use later]
+        
+        [This function will create the Learning convolutions]
+        
+        Arguments:
+            input_channels {[int]} -- [the input number of channels, in our case
+                                       the number of channels from downsample]
+            output_channels {[int]} -- [the output number of channels, will det-
+                                        -ermine the upcoming channels]
+        
+        Keyword Arguments:
+            kernel_size {number} -- [size of filter] (default: {3})
+            leakiness {number} -- [the negative leakiness] (default: {1e-2})
+            conv_bias {bool} -- [to use the bias in filters] (default: {True})
+            inst_norm_affine {bool} -- [affine use in norm] (default: {True})
+            res {bool} -- [to use residual connections] (default: {False})
+            lrelu_inplace {bool} -- [To update conv outputs with lrelu outputs] 
+                                    (default: {True})
+        """
         self.input_channels = input_channels
         self.output_channels = output_channels
         self.dropout_p = dropout_p
@@ -557,6 +653,25 @@ class IncDropout(nn.Module):
 class IncUpsamplingModule(nn.Module):
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True, res = False, lrelu_inplace = True):
         nn.Module.__init__(self)
+        """[The Out convolution module to learn the information and use later]
+        
+        [This function will create the Learning convolutions]
+        
+        Arguments:
+            input_channels {[int]} -- [the input number of channels, in our case
+                                       the number of channels from downsample]
+            output_channels {[int]} -- [the output number of channels, will det-
+                                        -ermine the upcoming channels]
+        
+        Keyword Arguments:
+            kernel_size {number} -- [size of filter] (default: {3})
+            leakiness {number} -- [the negative leakiness] (default: {1e-2})
+            conv_bias {bool} -- [to use the bias in filters] (default: {True})
+            inst_norm_affine {bool} -- [affine use in norm] (default: {True})
+            res {bool} -- [to use residual connections] (default: {False})
+            lrelu_inplace {bool} -- [To update conv outputs with lrelu outputs] 
+                                    (default: {True})
+        """
         self.input_channels = input_channels 
         self.output_channels = output_channels
         self.dropout_p = dropout_p
