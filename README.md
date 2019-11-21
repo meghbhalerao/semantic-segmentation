@@ -45,4 +45,4 @@ Open the `train_parameters.cfg` file and change the training hyperparameters suc
 6. Depending on the value of the parameter `save_best` in the `train_paramters.cfg` file, `$save_best` number of models will be saved. Hence, the total number of weight files that will be saved are : `$save_best * number_of_folds`
 
 ## Inference/Predicting Segmentation on unseen data (for more details look into the `gen_seg` folder)
-`cd` into the `gen_seg` folder which in-short stands for generate segmentations. After this you can `cd` into either of `gen_train` or `gen_validation` or `gen_test` according to which dataset's segmentation you want to generate.
+`cd` into the `gen_seg` folder which in-short stands for **generate segmentations**. After this you can `cd` into either of `gen_train` or `gen_validation` or `gen_test` according to which dataset's segmentation you want to generate.
