@@ -24,7 +24,7 @@ Open the `train_parameters.cfg` file and change the training hyperparameters suc
 3. Edit each of the submission scripts to make sure that the correct paths to the training and validation scripts is passed as an argument to `trainer.py`
 4. Run each of the submission scripts either by `bash script_name.sh` or `qsub script_name.sh` (if you are using a SGE computing cluster)
 ###  How and where are the weights saved?
-1. The weights (models) are saved as `.pt` or `.pth` files.
+1. The weights (models) are saved as `.pt`.
 2. All the models will be saved in the folder that you specified in the `model_path` parameter in the `train_parameters.cfg` file
 3. The saved models follow is specific naming scheme
 4. Each of the models is named in the form `modXYYY.pt`
