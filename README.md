@@ -31,9 +31,4 @@ Open the `train_parameters.cfg` file and change the training hyperparameters suc
 5. `X` tells us which fold is the model from i.e. `1-5` and `YYY` tells us what is the epoch number where the best model weights were obtained.
 6. Depending on the value of the parameter `save_best` in the `train_paramters.cfg` file, `$save_best` number of models will be saved. Hence, the total number of weight files that will be saved are : `$save_best * number_of_folds`
 ## Inference/Predicting Segmentation on unseen data
-1. `cd` into the `gen_seg` folder which in-short stands for generate segmentations
-2. `cd` into the `gen_train` or `gen_validation` or `gen_test` folder according to which datasets' segmentation you would like to generate.
-3. Open the `seg_single_model1.py` file.
-4. Change the `data_path` variable to the path where the preprocessed validation images are stored
-5. Change the `save_path` variable to the path of the folder
-
+`cd` into the `gen_seg` folder which in-short stands for generate segmentations. After this you can `cd` into either of `gen_train` or `gen_validation` or `gen_test` according to which dataset's segmentation you want to generate.
