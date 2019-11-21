@@ -10,6 +10,6 @@ Again, ideally, the documentation of this entire repo is written under the assum
 8. Further details of the memory requirements can be found in either of the `submit_single*.sh` scripts.
 9. For further details on how and where the predicted segmentations are stored (of each fold) please `cd` into the `stored_outputs_val` folder under `gen_seg`
 10. Once you have understood how the 5 segmentations from the 5 folds are generated, now we can fuse all the 5 segmentations using majority voting 
-11. Change the `path` variable to the path to the folder `stored_outputs_val` and the `save_path` variable to the folder where you want to store the final segmentations.
+11. Change the `path` variable to the path to the folder `stored_outputs_test` and the `save_path` variable to the folder where you want to store the final segmentations.
 12. Once you have made these changes run the `majority_voting.sh` script 
 13. Running this script will combine the predictions of the 5 folds using majority voting and save them accoring to the paths mentioned 
