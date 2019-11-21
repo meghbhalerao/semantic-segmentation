@@ -437,7 +437,6 @@ class out_conv(nn.Module):
  
 #the operations in the initialization functions just define these functions and then they are used in the forward method 
 #Here the number of input and output channels are the same as this is the encoding inception module - in the decoding inception module they will differ - input # of features will be twice the output # of features
-        
 
 class InceptionModule(nn.Module):
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True,res=False,lrelu_inplace=True):
