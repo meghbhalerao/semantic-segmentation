@@ -22,7 +22,7 @@ Set of instructions on how to preprocess the raw BraTS data:
 ###  Preparing the necessary CSV files (for more details look into the `csv_all` folder)
 1. `cd` into the `csv_all` folder
 2. Open the `ccsv.py` file and change the variable `train_path` to the path defined by the `path` variable in the previous section, i.e., `/$Whatever/Preprocessed_data/train/`.
-3. Run the `ccsv.py` using `python ccsv.py`, again after making sure that the necessary dependencies are installed
+3. Run the `ccsv.py` using `python ccsv.py`, again after making sure that the necessary dependencies [csv, pandas] are installed
 4. The training process is done using 5 fold cross validation, hence 10 `.csv` files are generated, 5 for training folds and 5 for validation folds
 
 ## Training the Model
