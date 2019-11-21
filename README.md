@@ -31,7 +31,7 @@ Set of instructions on how to preprocess the raw BraTS data:
 Open the `train_parameters.cfg` file and change the training hyperparameters such as Number of Epochs (`num_epochs`), Optimizer (`opt`), Loss Function (`which_loss`), batch size and so on. The description of each of the hyperparameter is documented in the [train_parameters.cfg](https://github.com/meghbhalerao/Semantic_Segmentation/blob/master/train_parameters.cfg) file
 
 ###  Running the training process (for more details look into the `submission_scripts` folder)
-1. The training script `trainer.py` takes in 2 command line arguments : first is the path to the training `csv` file of a given fold, and the second is the path to the validation `csv` file of a given fold.
+1. The training script `trainer.py` takes in 2 command line arguments : first is the path to the training `csv` file of a given fold, and the second is the path to the validation `csv` file of a given fold (the respective pairs are generated at point **4** of the CSV preparation step above).
 2. `cd` into the `submission_scripts` folder. There are 5 submission scripts (one for each fold)
 3. Edit each of the submission scripts to make sure that the correct paths to the training and validation scripts is passed as an argument to `trainer.py`
 4. Run each of the submission scripts either by `bash script_name.sh` or `qsub script_name.sh` (if you are using a SGE computing cluster)
