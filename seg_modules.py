@@ -1,3 +1,7 @@
+# This is the file where the basic components of the U-Net architecture are defined to make it very modular:
+# Since the same modules are used multiple times in the same architecture and sometimes in other architectures as well
+# it becomes highly convenient for us to define them as classes and instantiate them while using them later 
+# These modules are used by the new_models.py to further build upon these elementary modules to make a full network 
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -442,7 +446,7 @@ class out_conv(nn.Module):
 class InceptionModule(nn.Module):
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True,res=False,lrelu_inplace=True):
         nn.Module.__init__(self)
-        """[The Out convolution module to learn the information and use later]
+        """[The Inception Module learns multi-scale features by parallel conv pathways ]
         
         [This function will create the Learning convolutions]
         
@@ -506,7 +510,7 @@ class ResNetModule(nn.Module):
     
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True,res=False,lrelu_inplace=True):
         nn.Module.__init__(self)
-        """[The Out convolution module to learn the information and use later]
+        """[The Resnet module is used at the beginning and end of the network - again for multi-scale feature extraction]
         
         [This function will create the Learning convolutions]
         
@@ -549,7 +553,7 @@ class IncDownsamplingModule(nn.Module):
     def __init__(self, input_channels, output_channels, leakiness=1e-2, kernel_size=1, conv_bias=True, 
                  inst_norm_affine=True, lrelu_inplace=True):
         nn.Module.__init__(self)
-        """[The Out convolution module to learn the information and use later]
+        """[Downsampling using convolution with stride 2]
         
         [This function will create the Learning convolutions]
         
@@ -584,7 +588,7 @@ class IncDownsamplingModule(nn.Module):
 class IncConv(nn.Module):
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True,res=False,lrelu_inplace=True):
         nn.Module.__init__(self)
-        """[The Out convolution module to learn the information and use later]
+        """[1 * 1 * 1 convolutions]
         
         [This function will create the Learning convolutions]
         
@@ -617,7 +621,7 @@ class IncConv(nn.Module):
 class IncDropout(nn.Module):
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True, res = False, lrelu_inplace = True):
         nn.Module.__init__(self)
-        """[The Out convolution module to learn the information and use later]
+        """[Dropout regualarizer used at the end of the network]
         
         [This function will create the Learning convolutions]
         
@@ -653,7 +657,7 @@ class IncDropout(nn.Module):
 class IncUpsamplingModule(nn.Module):
     def __init__(self,input_channels,output_channels,dropout_p=0.3,leakiness=1e-2,conv_bias=True,inst_norm_affine=True, res = False, lrelu_inplace = True):
         nn.Module.__init__(self)
-        """[The Out convolution module to learn the information and use later]
+        """[Upsampling using transpose convolution]
         
         [This function will create the Learning convolutions]
         

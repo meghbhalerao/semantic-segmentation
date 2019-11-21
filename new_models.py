@@ -1,3 +1,6 @@
+# This is the file where the actual architecture of the network is written 
+# This file uses the module classes which are defined in the seg_modules.py file and builds upon that
+# Links to each of the architecture are given in the train_parameters.cfg file
 import torch.nn.functional as F
 import torch.nn as nn
 import torch
