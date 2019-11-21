@@ -9,7 +9,7 @@ Again, ideally, the documentation of this entire repo is written under the assum
 1. This is the folder you want to `cd` into when you want to generate tumor segmentations from Brain MR Images
 2. The segmentation is generated using 5 models (which are trained using 5 fold cross validation), by first individually generating predictions of each model and then combining them using majority voting.
 3. In this folder you can see the files named as `seg_single_model*.*` and `submit_single*.sh`. The latter files are the main point of entry for the inference and takes a patient name as input (it is the only input that this executable takes). This patient needs to be present in `data_path`.
-4. These files are used to generate the segmentations of individual models and the fold number can be obtained from the naming scheme of the files. 
+4. These files are used to generate the segmentations using individual models and [**NEEDS FINISHING**] the fold number can be obtained from the naming scheme of the files. 
 5. Run each of the `seg_single_model*.sh` either by `bash` or `qsub` - doesn't really matter. 
 6. Running these bash scripts will submit `submit_single*.sh` script to the cluster multiple times with the patient name as the paramter to the script
 7. The entire patient image is segmented at once and not patch-wise (like the training process) and hence the memory requirement is high and hence the inference can't be done on a GPU.
