@@ -19,7 +19,7 @@ Set of instructions on how to preprocess the raw BraTS data:
 2. Change the `path` variable to the folder where you wish to save the preprocessed data, preferably to something understandable such as `/$Whatever/Preprocessed_data/train/` (this location needs to be present **before** the script runs)
 3. Run the file `pp.py` using `python pp.py` after making sure that all the dependencies [numpy, math, nibabel, tqdm] are installed. Doing this will preprocess the raw data and write it to the location specified in `path`.
 
-###  Preparing the necessary CSV files (for more details look into the `csv_all folder`)
+###  Preparing the necessary CSV files (for more details look into the `csv_all` folder)
 1. `cd` into the `csv_all` folder
 2. Open the `ccsv.py` file and change the variable `train_path` to  `/$Whatever/Preprocessed_data/train/` as mentioned above.
 3. Run the `ccsv.py` using `python ccsv.py`, again after making sure that the necessary dependencies are installed
