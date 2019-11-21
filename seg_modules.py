@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+
 class in_conv(nn.Module):
     def __init__(self, input_channels, output_channels, kernel_size = 3, 
                  dropout_p=0.3, leakiness=1e-2, conv_bias=True, 
