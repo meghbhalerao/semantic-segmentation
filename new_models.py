@@ -160,17 +160,18 @@ class uinc(nn.Module):
         self.ri_4 = InceptionModule(base_filters*16,base_filters*16,res=True)
         self.us_3 = IncUpsamplingModule(base_filters*16,base_filters*8)
         self.ri_5 = InceptionModule(base_filters*16,base_filters*16,res=True)
-        self.us_2 = IncUpsampling(base_filters*16,base_filters*4)
+        self.us_2 = IncUpsamplingModule(base_filters*16,base_filters*4)
         self.ri_6 = InceptionModule(base_filters*8,base_filters*8,res=True)
         self.us_1 = IncUpsamplingModule(base_filters*8,base_filters*2)
         self.ri_7 = InceptionModule(base_filters*4,base_filters*4,res=True)
         self.us_0 = IncUpsamplingModule(base_filters*4,base_filters)
         self.ri_8 = InceptionModule(base_filters*2,base_filters*2,res=True)
-        self.conv9_1x1 = IncConv(base_filters*2,base_filters*2)
+        self.conv9_1x1 = IncConv(base_filters*2,base_filters)
         self.rn_10 = ResNetModule(base_filters*2,base_filters*2,res=True)
         self.dropout = IncDropout(base_filters*2,n_classes)
     
     def forward(self,x):
+
         x = self.conv0_1x1(x)
         x1 = self.rn_0(x)
         x2 = self.ri_0(x1)
