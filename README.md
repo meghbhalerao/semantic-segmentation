@@ -28,13 +28,13 @@ Set of instructions on how to preprocess the raw BraTS data:
 ## Training the Model
 
 ### Setting the training hyperparameters
-Open the `train_parameters.cfg` file and change the training hyperparameters such as Number of Epochs, Optimizer, Loss Function, etc. The description of each of the hyperparameter is documented in the `train_parameters.cfg` file
+Open the `train_parameters.cfg` file and change the training hyperparameters such as Number of Epochs (`num_epochs`), Optimizer (`opt`), Loss Function (`which_loss`), batch size and so on. The description of each of the hyperparameter is documented in the [train_parameters.cfg](https://github.com/meghbhalerao/Semantic_Segmentation/blob/master/train_parameters.cfg) file
 
 ###  Running the training process (for more details look into the `submission_scripts` folder)
-1. The training script `trainer.py` takes in 2 command line arguments : first is the path to the training `csv` file of a given fold, and the second is the path to the validation `csv` file of a given fold.
+1. The training script `trainer.py` takes in 2 command line arguments : first is the path to the training `csv` file of a given fold, and the second is the path to the validation `csv` file of a given fold (the respective pairs are generated at point **4** of the CSV preparation step above).
 2. `cd` into the `submission_scripts` folder. There are 5 submission scripts (one for each fold)
-3. Edit each of the submission scripts to make sure that the correct paths to the training and validation scripts is passed as an argument to `trainer.py`
-4. Run each of the submission scripts either by `bash script_name.sh` or `qsub script_name.sh` (if you are using a SGE computing cluster)
+3. Edit each of the submission scripts to make sure that the correct paths to the training and validation scripts is passed as arguments to `trainer.py`
+4. Run each of the submission scripts (`trainer_f*.sh`) either by `bash script_name.sh` or `qsub script_name.sh` (if you are using a SGE computing cluster)
 
 ###  How and where are the weights saved?
 1. The weights (models) are saved as `*.pt` files.
@@ -45,4 +45,4 @@ Open the `train_parameters.cfg` file and change the training hyperparameters suc
 6. Depending on the value of the parameter `save_best` in the `train_paramters.cfg` file, `$save_best` number of models will be saved. Hence, the total number of weight files that will be saved are : `$save_best * number_of_folds`
 
 ## Inference/Predicting Segmentation on unseen data (for more details look into the `gen_seg` folder)
-`cd` into the `gen_seg` folder which in-short stands for generate segmentations. After this you can `cd` into either of `gen_train` or `gen_validation` or `gen_test` according to which dataset's segmentation you want to generate.
+`cd` into the `gen_seg` folder which in-short stands for **generate segmentations**. After this you can `cd` into either of `gen_train` or `gen_validation` or `gen_test` according to which dataset's segmentation you want to generate.
