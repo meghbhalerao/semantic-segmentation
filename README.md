@@ -1,5 +1,9 @@
 # Medical Image Semantic Segmentation
 Variations of the U-Net architecture for Medical Image Semantic Segmentation using PyTorch. Clone this repository using `git clone` and then `cd` into it. Ideally, this documentation is written under the assumption that the user is working on a SGE based HPC cluster (Hence, the terminology that I will be using subsequently will be influenced by this assumption) with sufficient GPU and CPU memory. The CPU and GPU memory requirements are further elaborated in the documentation in the respective folders. 
+## What are the modules/packages needed?
+PyTorch framework is used. For uses on the `cbica-cluster` (although you can see the required modules at the beginning of each trainer script I will mention them here anyways):
+`module load pytorch/1.0.1` : Always needed
+`module load gcc/5.2.0` : Needed somtimes because pandas package throws errors sometimes if this is not loaded 
 ## Preparing the dataset 
 ### Downloading the dataset
 Set of instructions on how to preprocess the raw BraTS data:
