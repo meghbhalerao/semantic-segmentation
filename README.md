@@ -44,9 +44,9 @@ mv LGG/* Original_data/train/
 Open the `${repo_location}/train_parameters.cfg` file and change the training hyperparameters such as Number of Epochs (`num_epochs`), Optimizer (`opt`), Loss Function (`which_loss`), batch size and so on. The descriptions for each of the hyperparameters is documented in the file itself.
 
 ###  Running the training process (for more details look into the `submission_scripts` folder)
-1. The training script `trainer.py` takes in 2 command line arguments : first is the path to the training `csv` file of a given fold, and the second is the path to the validation `csv` file of a given fold (the respective pairs are generated at point **4** of the CSV preparation step above).
-2. `cd` into the `submission_scripts` folder. There are 5 submission scripts (one for each fold)
-3. Edit each of the submission scripts to make sure that the correct paths to the training and validation scripts is passed as arguments to `trainer.py`
+1. The training script `${repo_location}/submission_scripts/trainer.py` takes in 2 command line arguments : first is the path to the training `csv` file of a given fold, and the second is the path to the validation `csv` file of a given fold (the respective pairs are generated at point **4** of the CSV preparation step above).
+2. `cd` into the `${repo_location}/submission_scripts` folder. There are 5 submission scripts (one for each fold).
+3. Edit each of the submission scripts to make sure that the correct paths to the training and validation scripts is passed as arguments to `trainer.py` (these are generated in the CSV file section).
 4. Run each of the submission scripts (`trainer_f*.sh`) either by `bash script_name.sh` or `qsub script_name.sh` (if you are using a SGE computing cluster)
 
 ###  How and where are the weights saved?
