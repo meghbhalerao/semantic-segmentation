@@ -29,7 +29,7 @@ mv LGG/* Original_data/train/
 ```
 
 ### Preprocessing the dataset (for more details look into the `Preprocess_Data` folder)
-1. `cd` into the `Preprocess_Data` folder and open the `pp.py`  and change the variable `path_data` to `/$Whatever/Orignal_data/train/` as mentioned in the point number 2 above (Do not forget the `/` at the end - this is assumed to be present during file parsing)
+1. Open `Preprocess_Data/pp.py` with your favorite editor and change the variable `path_data` to `/$Whatever/Orignal_data/train/` as mentioned in the point number 2 above (Do not forget the `/` at the end - this is assumed to be present during file parsing)
 2. Change the `path` variable in `Preprocess_Data/pp.py` to the folder where you wish to save the preprocessed data, preferably to something understandable such as `/$Whatever/Preprocessed_data/train/` (this location needs to be present **before** the script runs)
 3. Run the file `pp.py` using `python pp.py` after making sure that all the dependencies [numpy, math, nibabel, tqdm] are installed. Doing this will preprocess the raw data and write it to the location specified in `path`.
 
