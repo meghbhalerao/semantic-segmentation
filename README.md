@@ -14,8 +14,19 @@ module load gcc/5.2.0 # Needed somtimes because pandas package throws errors som
 ### Downloading the dataset
 Set of instructions on how to preprocess the raw BraTS data:
 1. Follow instructions on [this page](https://www.med.upenn.edu/cbica/brats2019/registration.html) to download the BraTS training data
-2. Create a new folder called `Original_data` and within it a folder called `train`
+2. Create a new folder called `Original_data` and within it a folder called `train`:
+```bash
+cd ${place_where_you_downloaded_brats_training_data}
+mkdir Original_data
+cd Original_data
+mkdir train
+```
 3. Copy/Move all the patients from the `HGG` and `LGG` folders into the folder `train` which is mentioned above (wherever it may be located)
+```bash
+cd ${place_where_you_downloaded_brats_training_data}
+mv HGG/* Original_data/train
+mv LGG/* Original_data/train
+```
 
 ### Preprocessing the dataset (for more details look into the `Preprocess_Data` folder)
 1. `cd` into the `Preprocess_Data` folder and open the `pp.py`  and change the variable `path_data` to `/$Whatever/Orignal_data/train/` as mentioned in the point number 2 above (Do not forget the `/` at the end - this is assumed to be present during file parsing)
