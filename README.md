@@ -34,15 +34,14 @@ mv LGG/* Original_data/train/
 3. Run the file `pp.py` using `python ${repo_location}/Preprocess_Data/pp.py` after making sure that all the dependencies [numpy, math, nibabel, tqdm] are installed. Doing this will preprocess the raw data and write it to the location specified in `path`.
 
 ###  Preparing the necessary CSV files (for more details look into the `csv_all` folder)
-1. `cd` into the `csv_all` folder
-2. Open the `${repo_location}/csv_all/ccsv.py` with your favorite editor and change the variable `train_path` to the path defined by the `path` variable in the previous section, i.e., `${brats_data}/Preprocessed_data/train/`.
-3. Run the `ccsv.py` using `python ${repo_location}/csv_all/ccsv.py`, again after making sure that the necessary dependencies [csv, pandas] are installed.
-4. The training process is done using `5` fold cross validation, hence `10` CSV files are generated in the location defined by `train_path`: `5` each for training and validation folds.
+1. Open the `${repo_location}/csv_all/ccsv.py` with your favorite editor and change the variable `train_path` to the path defined by the `path` variable in the previous section, i.e., `${brats_data}/Preprocessed_data/train/`.
+2. Run the `ccsv.py` using `python ${repo_location}/csv_all/ccsv.py`, again after making sure that the necessary dependencies [csv, pandas] are installed.
+3. The training process is done using `5` fold cross validation, hence `10` CSV files are generated in the location defined by `train_path`: `5` each for training and validation folds.
 
 ## Training the Model
 
 ### Setting the training hyperparameters
-Open the `train_parameters.cfg` file and change the training hyperparameters such as Number of Epochs (`num_epochs`), Optimizer (`opt`), Loss Function (`which_loss`), batch size and so on. The description of each of the hyperparameter is documented in the [train_parameters.cfg](https://github.com/meghbhalerao/Semantic_Segmentation/blob/master/train_parameters.cfg) file
+Open the `${repo_location}/train_parameters.cfg` file and change the training hyperparameters such as Number of Epochs (`num_epochs`), Optimizer (`opt`), Loss Function (`which_loss`), batch size and so on. The descriptions for each of the hyperparameters is documented in the file itself.
 
 ###  Running the training process (for more details look into the `submission_scripts` folder)
 1. The training script `trainer.py` takes in 2 command line arguments : first is the path to the training `csv` file of a given fold, and the second is the path to the validation `csv` file of a given fold (the respective pairs are generated at point **4** of the CSV preparation step above).
