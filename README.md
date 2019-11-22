@@ -13,7 +13,7 @@ module load gcc/5.2.0 # Needed somtimes because pandas package throws errors som
 
 ### Downloading the dataset
 Set of instructions on how to preprocess the raw BraTS data:
-1. Download the BraTS training data from here : https://www.google.com/search?client=ubuntu&channel=fs&q=cbica+ipp&ie=utf-8&oe=utf-8
+1. Follow instructions on [this page](https://www.med.upenn.edu/cbica/brats2019/registration.html) to download the BraTS training data
 2. Create a new folder called `Original_data` and within it a folder called `train`
 3. Copy/Move all the patients from the `HGG` and `LGG` folders into the folder `train` which is mentioned above (wherever it may be located)
 
