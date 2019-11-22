@@ -16,21 +16,21 @@ Set of instructions on how to preprocess the raw BraTS data:
 1. Follow instructions on [this page](https://www.med.upenn.edu/cbica/brats2019/registration.html) to download the BraTS training data
 2. Create a new folder called `Original_data` and within it a folder called `train`:
 ```bash
-cd ${place_where_you_downloaded_brats_training_data}
+cd ${brats_data} # the data was downloaded and extracted in this location
 mkdir Original_data
 cd Original_data
 mkdir train
 ```
 3. Copy/Move all the patients from the `HGG` and `LGG` folders into the folder `train` which is mentioned above (wherever it may be located)
 ```bash
-cd ${place_where_you_downloaded_brats_training_data}
+cd ${brats_data}
 mv HGG/* Original_data/train/
 mv LGG/* Original_data/train/
 ```
 
 ### Preprocessing the dataset (for more details look into the `Preprocess_Data` folder)
-1. Open `${repo_location}/Preprocess_Data/pp.py` with your favorite editor and change the variable `path_data` to `${place_where_you_downloaded_brats_training_data}/Orignal_data/train/` as mentioned in the point number 2 above (Do not forget the `/` at the end - this is assumed to be present during file parsing)
-2. Change the `path` variable in `${repo_location}/Preprocess_Data/pp.py` to the folder where you wish to save the preprocessed data, preferably to something understandable such as `${place_where_you_downloaded_brats_training_data}/Preprocessed_data/train/` (this location needs to be present **before** the script runs)
+1. Open `${repo_location}/Preprocess_Data/pp.py` with your favorite editor and change the variable `path_data` to `${brats_data}/Orignal_data/train/` as mentioned in the point number 2 above (Do not forget the `/` at the end - this is assumed to be present during file parsing)
+2. Change the `path` variable in `${repo_location}/Preprocess_Data/pp.py` to the folder where you wish to save the preprocessed data, preferably to something understandable such as `${brats_data}/Preprocessed_data/train/` (this location needs to be present **before** the script runs)
 3. Run the file `pp.py` using `python ${repo_location}/Preprocess_Data/pp.py` after making sure that all the dependencies [numpy, math, nibabel, tqdm] are installed. Doing this will preprocess the raw data and write it to the location specified in `path`.
 
 ###  Preparing the necessary CSV files (for more details look into the `csv_all` folder)
