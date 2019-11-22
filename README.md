@@ -37,7 +37,7 @@ mv LGG/* Original_data/train/
 1. `cd` into the `csv_all` folder
 2. Open the `${repo_location}/csv_all/ccsv.py` with your favorite editor and change the variable `train_path` to the path defined by the `path` variable in the previous section, i.e., `${brats_data}/Preprocessed_data/train/`.
 3. Run the `ccsv.py` using `python ${repo_location}/csv_all/ccsv.py`, again after making sure that the necessary dependencies [csv, pandas] are installed.
-4. The training process is done using 5 fold cross validation, hence 10 `.csv` files are generated, 5 for training folds and 5 for validation folds and they are generated in the location defined by `train_path`.
+4. The training process is done using `5` fold cross validation, hence `10` CSV files are generated in the location defined by `train_path`: `5` each for training and validation folds.
 
 ## Training the Model
 
