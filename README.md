@@ -3,8 +3,11 @@ Variations of the U-Net architecture for Medical Image Semantic Segmentation usi
 
 ## What are the modules/packages needed?
 PyTorch framework is used. For uses on the `cbica-cluster` (although you can see the required modules at the beginning of each trainer script I will mention them here anyway):
-`module load pytorch/1.0.1` : Always needed
-`module load gcc/5.2.0` : Needed somtimes because pandas package throws errors sometimes if this is not loaded 
+
+```bash
+module load pytorch/1.0.1 # Always needed
+module load gcc/5.2.0 # Needed somtimes because pandas package throws errors sometimes if this is not loaded 
+```
 
 ## Preparing the dataset 
 
