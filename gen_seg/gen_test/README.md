@@ -18,11 +18,11 @@ Again, ideally, the documentation of this entire repo is written under the assum
 15. Look at the number of the best epoch and that goes in the `xxx` field in the `modxxx.pt`.This is how you set the `model_pathx`. 
 16. Do the above steps in the files corresponding to each fold.
 5. Run each of the `seg_single_model*.sh` either by `bash` or `qsub`. These are the main points of entry for the inference. 
-6. Running these bash scripts will submit `submit_single*.sh` script to the cluster multiple times with the patient name as the paramter to the script (these patient names are taken from the folder names that are traversed through in the previous script).
+6. Running these bash scripts will submit `submit_single*.sh` script to the cluster multiple times (each patient in the testing data folder) with the patient name as the paramter to the script (these patient names are taken from the folder names that are traversed through in the previous script).
 7. The entire patient image is segmented at once and not patch-wise (like the training process) and hence the memory requirement is high and hence the inference can't be done on a GPU.
 8. Further details of the memory requirements can be found in either of the `submit_single*.sh` scripts.
 9. For further details on how and where the predicted segmentations are stored (of each fold) please `cd` into the `stored_outputs_*` folder under `gen_seg`
-10. Once you have understood how the 5 segmentations from the 5 folds are generated, now we can fuse all the 5 segmentations using majority voting 
+10. Once you have understood how the 5 segmentations from the 5 folds are generated, now we can fuse all the 5 segmentations using majority voting. 
 11. Change the `path` variable to the path to the folder `stored_outputs_test` and the `save_path` variable to the folder where you want to store the final segmentations.
-12. Once you have made these changes run the `majority_voting.sh` script 
+12. Once you have made these changes run the `majority_voting.sh` script which runs the `majority_voting.py` file. 
 13. Running this script will combine the predictions of the 5 folds using majority voting and save them accoring to the paths mentioned 
