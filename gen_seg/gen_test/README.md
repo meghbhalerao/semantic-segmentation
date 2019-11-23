@@ -5,12 +5,12 @@ Again, ideally, the documentation of this entire repo is written under the assum
 - Where are the following variables coming from: `data_path`, `save_path`, `model_path1`.
 - How to choose the appropriate model path by looking at the standard output file from the logs.
 
-1. This is the folder you want to `cd` into when you want to generate tumor segmentations from Brain MR Images (either train/test/validation - same for all - only difference in paths to the data of train/test/val)
+1. This is the folder you want to `cd` into when you want to generate tumor segmentations for the testing dataset Brain MR Images.
 2. The segmentation is generated using 5 models (which are trained using 5 fold cross validation), by first individually generating predictions of each model and then combining them using majority voting.
 3. In this folder you can see the files named as `seg_single_model*.*` and `submit_single*.sh`. The latter files are helper scripts for the inference and takes a patient name as input (it is the only input that this executable takes). This patient name needs to be present in `data_path` (how to set the `data_path` will be described in further points)
 4. The `seg_single_model*.py` needs to be edited with proper paths to generate the segmentations correctly.
 5. Open the `seg_single_model*.py` file.
-6. Set the 
+6. Set the `data_path` variable to the path where the 
 5. Run each of the `seg_single_model*.sh` either by `bash` or `qsub`. These are the main points of entry for the inference. 
 6. Running these bash scripts will submit `submit_single*.sh` script to the cluster multiple times with the patient name as the paramter to the script (these patient names are taken from the folder names that are traversed through in the previous script).
 7. The entire patient image is segmented at once and not patch-wise (like the training process) and hence the memory requirement is high and hence the inference can't be done on a GPU.
