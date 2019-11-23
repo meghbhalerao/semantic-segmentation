@@ -11,6 +11,7 @@ Again, ideally, the documentation of this entire repo is written under the assum
 4. The `seg_single_model*.py` needs to be edited with proper paths to generate the segmentations correctly.
 5. Open the `seg_single_model*.py` file.
 6. Set the `data_path` variable to the path where the testing preprocessed data is present (don't forget the forward slash after the path)
+7. Set the `save_path` to the path to the `stored_outputs_test` folder (wherever it may be present)
 5. Run each of the `seg_single_model*.sh` either by `bash` or `qsub`. These are the main points of entry for the inference. 
 6. Running these bash scripts will submit `submit_single*.sh` script to the cluster multiple times with the patient name as the paramter to the script (these patient names are taken from the folder names that are traversed through in the previous script).
 7. The entire patient image is segmented at once and not patch-wise (like the training process) and hence the memory requirement is high and hence the inference can't be done on a GPU.
