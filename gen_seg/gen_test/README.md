@@ -17,7 +17,7 @@ Again, ideally, the documentation of this entire repo is written under the assum
 10. As mentioned earlier, the models are saved as `.pt` files, so the `model_path*` will end with `modxxx.pt`.
 11. Now, let's get to how exactly choosing the path to the model (weight) file. 
 12. So, once you run the model for whatever number of epochs (by submitting the training scripts to the cluster as mentioned in the other documentation), the stdout and stderr files are generated with the names like $jobname.o$jobid and $jobname.e$jobid respectively.
-13. You need to look manually into each of the stdout files (corresponding to each fold)
+13. You need to look manually into each of the stdout files (corresponding to each fold) to find at which epoch did the best validation-during-training loss occur and the model saved at this epoch is considered to be the 'best model' that we have been talking about before.
 5. Run each of the `seg_single_model*.sh` either by `bash` or `qsub`. These are the main points of entry for the inference. 
 6. Running these bash scripts will submit `submit_single*.sh` script to the cluster multiple times with the patient name as the paramter to the script (these patient names are taken from the folder names that are traversed through in the previous script).
 7. The entire patient image is segmented at once and not patch-wise (like the training process) and hence the memory requirement is high and hence the inference can't be done on a GPU.
