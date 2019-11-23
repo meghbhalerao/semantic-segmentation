@@ -7,7 +7,7 @@ Again, ideally, the documentation of this entire repo is written under the assum
 
 1. This is the folder you want to `cd` into when you want to generate tumor segmentations from Brain MR Images (either train/test/validation - same for all - only difference in paths to the data of train/test/val)
 2. The segmentation is generated using 5 models (which are trained using 5 fold cross validation), by first individually generating predictions of each model and then combining them using majority voting.
-3. In this folder you can see the files named as `seg_single_model*.*` and `submit_single*.sh`. The latter files are helper scripts for the inference and takes a patient name as input (it is the only input that this executable takes). This patient name needs to be present in `data_path` 
+3. In this folder you can see the files named as `seg_single_model*.*` and `submit_single*.sh`. The latter files are helper scripts for the inference and takes a patient name as input (it is the only input that this executable takes). This patient name needs to be present in `data_path` (how to set the `data_path` will be described in further points)
 4. The `seg_single_model*.py` needs to be edited with proper paths to generate the segmentations correctly.
 5. Open the `seg_single_model*.py` file.
 6. Set the 
