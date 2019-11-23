@@ -5,8 +5,7 @@ Again, ideally, the documentation of this entire repo is written under the assum
 - Where are the following variables coming from: `data_path`, `save_path`, `model_path1`.
 - How to choose the appropriate model path by looking at the standard output file from the logs.
 
-
-1. This is the folder you want to `cd` into when you want to generate tumor segmentations from Brain MR Images
+1. This is the folder you want to `cd` into when you want to generate tumor segmentations from Brain MR Images (either train/test/vaslidation - same for all - only difference in paths to the data of train/test/val)
 2. The segmentation is generated using 5 models (which are trained using 5 fold cross validation), by first individually generating predictions of each model and then combining them using majority voting.
 3. In this folder you can see the files named as `seg_single_model*.*` and `submit_single*.sh`. The latter files are helper scripts for the inference and takes a patient name as input (it is the only input that this executable takes). This patient needs to be present in `data_path`. They are invoked from `seg_single_model*.sh`.
 4. These files are used to generate the segmentations using individual models and [**NEEDS FINISHING**] the fold number can be obtained from the naming scheme of the files. 
