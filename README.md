@@ -1,5 +1,5 @@
 # Medical Image Semantic Segmentation
-This repository gives the step-by-step instructions to train different variations of the U-Net architecture for Medical Image Semantic Segmentation (using PyTorch). As of now this process is limited to Brain Tumor Segmentation, but will later be extended to other anatomies. 
+This repository gives the step-by-step instructions to train different variations of the U-Net architecture for Medical Image Semantic Segmentation (using PyTorch). As of now this process is limited to Brain Tumor Segmentation, but will later be extended to other anatomies.  
 Clone this repository using `git clone` and then `cd` into it. Ideally, this documentation is written under the assumption that the user is working on a SGE based HPC cluster (Hence, the terminology that I will be using subsequently will be influenced by this assumption) with sufficient GPU and CPU memory. The CPU and GPU memory requirements are further elaborated in the documentation in the respective folders. 
 
 ## What are the modules/packages needed?
