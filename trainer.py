@@ -197,7 +197,7 @@ for ep in range(num_epochs):
         # Back Propagation for model to learn
         loss.backward()
         #Updating the weight values
-        optimizer.step()
+        optimizer.step()print("Epochs of top 5 validation losses are :", keep_list)
         # Calculating the multiclass dice loss and pushing it to the cpu and only taking its value
         curr_loss = MCD_loss(output.double(), mask.double(), n_classes).cpu().data.item()
         # Caculating the total dice loss
@@ -313,9 +313,9 @@ for ep in range(num_epochs):
                 if os.path.isfile(os.path.join(model_path + "mod" + a + str(j) + ".pt")):
                     os.remove(os.path.join(model_path + "mod" + a + str(j) + ".pt"))
                 
-        
-        print("Epochs of top 5 validation losses are :", keep_list)
-
+        print("\n\n")
+        print("Epochs of top 5 validation losses in decreasing order of accuracy are :", keep_list)
+        print("\n\n")
     total_val_loss = 0
     avg_val_loss = 0
     
