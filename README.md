@@ -1,5 +1,8 @@
 # Medical Image Semantic Segmentation
-Variations of the U-Net architecture for Medical Image Semantic Segmentation using PyTorch. Clone this repository using `git clone` and then `cd` into it. The documentation in this repository is written under the assumption that the user is working on a SGE-based HPC cluster with sufficient GPU and CPU memory. The CPU and GPU memory requirements are further elaborated in the in the respective folders. 
+
+This repository gives the step-by-step instructions to train different variations of the U-Net architecture for Medical Image Semantic Segmentation (using PyTorch). As of now this process is limited to Brain Tumor Segmentation, but will later be extended to other anatomies.  
+Clone this repository using `git clone` and then `cd` into it. Ideally, this documentation is written under the assumption that the user is working on a SGE based HPC cluster (Hence, the terminology that I will be using subsequently will be influenced by this assumption) with sufficient GPU and CPU memory. The CPU and GPU memory requirements are further elaborated in the documentation in the respective folders. 
+
 
 ## What are the modules/packages needed?
 PyTorch framework is used. For uses on the `cbica-cluster` (although you can see the required modules at the beginning of each trainer script I will mention them here anyway):
@@ -27,6 +30,17 @@ cd ${brats_data}
 mv HGG/* Original_data/train/
 mv LGG/* Original_data/train/
 ```
+
+### Folder Structure of the Dataset
+1. All the scripts (whichever are relavent) are written with repect to the data folder structure of the BraTS dataset.
+2. So, it is important to note that, if one is not using the BraTS data and/or is using different/additional data, it must comply with the BraTS dataset folder structure which will be described in the subsequent points.
+3. Let's take the case of the data in `Original_data/train/` with `n` patients.
+4. `n` patients correspond to `n` folders in the `Original_data/train/`
+5. The name of each of these folders is the `patient_ID` of that particular patient.
+6. The `patient_ID` could be any alpha-numeric sequence.
+7. Each `patient_ID` folder consists 5 `*.nii.gz` files with the following names : `patient_ID_t1.nii.gz`, `patient_ID_t2.nii.gz`, `patient_ID_t1ce.nii.gz`, `patient_ID_flair.nii.gz` and `patient_ID_seg.nii.gz`, corresponding to 4 imaging modalities and 1 ground truth segmentation mask.
+
+So, in short, whatever data you use, it is expected to be in the folder structure that is explained in the points above.
 
 ### Preprocessing the dataset (for more details look into the `Preprocess_Data` folder)
 1. Open `${repo_location}/Preprocess_Data/pp.py` with your favorite editor and change the variable `path_data` to `${brats_data}/Orignal_data/train/` as mentioned in the point number 2 above (Do not forget the `/` at the end - this is assumed to be present during file parsing).
