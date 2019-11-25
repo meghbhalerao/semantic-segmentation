@@ -19,7 +19,12 @@ Set of instructions on how to preprocess the raw BraTS data:
 2. So, it is important to note that, if one is not using the BraTS data and/or is using different/additional data, it must comply with the BraTS dataset folder structure which will be described in the subsequent points.
 3. Let's take the case of the data in `Original_data/train/` with `n` patients.
 4. `n` patients correspond to `n` folders in the `Original_data/train/`
-5. 
+5. The name of each of these folders is the `patient_ID` of that particular patient.
+6. The `patient_ID` could be any alpha-numeric sequence.
+7. Each `patient_ID` folder consists 5 `*.nii.gz` files with the following names : `patient_ID_t1.nii.gz`, `patient_ID_t2.nii.gz`, `patient_ID_t1ce.nii.gz`, `patient_ID_flair.nii.gz` and `patient_ID_seg.nii.gz`, corresponding to 4 imaging modalities and 1 ground truth segmentation mask.
+
+So, in short, whatever data you use, it is expected to be in the folder structure that is explained in the points above. 
+
 ### Preprocessing the dataset (for more details look into the `Preprocess_Data` folder)
 1. `cd` into the `Preprocess_Data` folder and open the `pp.py`  and change the variable `path_data` to `/$Whatever/Orignal_data/train/` as mentioned in the point number 2 above (Do not forget the `/` at the end - this is assumed to be present during file parsing)
 2. Change the `path` variable to the folder where you wish to save the preprocessed data, preferably to something understandable such as `/$Whatever/Preprocessed_data/train/` (this location needs to be present **before** the script runs)
