@@ -96,28 +96,36 @@ def preprocess_patient(patient_path):
     t2_data = nib.load(patient_path + "/" + t2_path)
     t2_affine = t2_data.affine
     t2_data = t2_data.get_fdata()
+
+    seg_path = glob.glob("*seg.nii.gz")
+    seg_path = str(seg_path[0])
+    seg_data = nib.load(patient_path + "/" + seg_path)
+    seg_affine = seg_data.affine
+    seg_data = seg_data.get_fdata()
+
     
     # Get the rmin, rmax, cmin, cmax, zmin, zmax for all modalities 
     (rmin_t1, rmax_t1, cmin_t1, cmax_t1, zmin_t1, zmax_t1) = bbox2_3D(t1_data)
     (rmin_t2, rmax_t2, cmin_t2, cmax_t2, zmin_t2, zmax_t2) = bbox2_3D(t2_data)
     (rmin_flair, rmax_flair, cmin_flair, cmax_flair, zmin_flair, zmax_flair) = bbox2_3D(flair_data)
     (rmin_t1ce, rmax_t1ce, cmin_t1ce, cmax_t1ce, zmin_t1ce, zmax_t1ce) = bbox2_3D(t1ce_data)
-   
+    (rmin_seg, rmax_seg, cmin_seg, cmax_seg, zmin_seg, zmax_seg) = bbox2_3D(seg_data)   
 
-    rmin = min(rmin_t1, rmin_t2, rmin_flair, rmin_t1ce)
-    rmax = max(rmax_t1, rmax_t2, rmax_flair, rmax_t1ce)
-    cmin = min(cmin_t1, cmin_t2, cmin_flair, cmin_t1ce)
-    cmax = max(cmax_t1, cmax_t2, cmax_flair,cmax_t1ce)
-    zmin = min(zmin_t1, zmin_t2, zmin_flair, zmin_t1ce)
-    zmax = max(zmax_t1, zmax_t2, zmax_flair, zmax_t1ce)
+    rmin = min(rmin_t1, rmin_t2, rmin_flair, rmin_t1ce,rmin_seg)
+    rmax = max(rmax_t1, rmax_t2, rmax_flair, rmax_t1ce,rmax_seg)
+    cmin = min(cmin_t1, cmin_t2, cmin_flair, cmin_t1ce,cmin_seg)
+    cmax = max(cmax_t1, cmax_t2, cmax_flair,cmax_t1ce,cmax_seg)
+    zmin = min(zmin_t1, zmin_t2, zmin_flair, zmin_t1ce,zmin_seg)
+    zmax = max(zmax_t1, zmax_t2, zmax_flair, zmax_t1ce,zmax_seg)
     
     # Crop_pad all modalities
     t1_data =  crop_pad(t1_data, rmin, rmax, cmin, cmax, zmin, zmax, is_mask=False)
     flair_data = crop_pad(flair_data, rmin, rmax, cmin, cmax, zmin, zmax, is_mask=False)
     t2_data = crop_pad(t2_data, rmin, rmax, cmin, cmax, zmin, zmax, is_mask=False)
     t1ce_data = crop_pad(t1ce_data, rmin, rmax, cmin, cmax, zmin, zmax, is_mask=False)
+    seg_data = crop_pad(seg_data, rmin, rmax, cmin, cmax, zmin, zmax, is_mask=True)
 
-    return t1_data,t1_affine,flair_data,flair_affine,t2_data,t2_affine,t1ce_data,t1ce_affine
+    return t1_data,t1_affine,flair_data,flair_affine,t2_data,t2_affine,t1ce_data,t1ce_affine,seg_data,seg_affine
 
 #Path of the raw data
 path_data = "/cbica/home/bhaleram/comp_space/brats/BraTS_2019_Test/" 
@@ -125,7 +133,7 @@ path_data = "/cbica/home/bhaleram/comp_space/brats/BraTS_2019_Test/"
 path = "/cbica/home/bhaleram/comp_space/brats/data/test/"
 a = os.listdir(path_data)
 for file in tqdm(a):
-    (t1_data,t1_affine,flair_data,flair_affine,t2_data,t2_affine,t1ce_data,t1ce_affine) = preprocess_patient(path_data + file + "/")
+    (t1_data,t1_affine,flair_data,flair_affine,t2_data,t2_affine,t1ce_data,t1ce_affine,seg_data,seg_affine) = preprocess_patient(path_data + file + "/")
     #below givrn is the directory where you want to save the preprocessed images
     os.mkdir(path + file)
     new_image = nib.Nifti1Image(t1_data, affine = t1_affine)
@@ -136,6 +144,8 @@ for file in tqdm(a):
     nib.save(new_image,path + file + "/" + file + "_t2.nii.gz")
     new_image = nib.Nifti1Image(t1ce_data, affine = t1ce_affine)
     nib.save(new_image,path + file + "/" + file + "_t1ce.nii.gz")
+    new_image = nib.Nifti1Image(seg_data, affine = seg_affine)
+    nib.save(new_image,path + file + "/" + file + "_seg.nii.gz")
     print("Iteration Done")
 
 
