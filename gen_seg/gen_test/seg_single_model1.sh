@@ -17,7 +17,7 @@ module load gcc/5.2.0
 FILES='/cbica/home/bhaleram/comp_space/brats/BraTS_2019_Validation/*'
 for file in $FILES
 do
-    echo $(basename $file)
+    echo $(basename $file) 
     qsub -l short submit_single1.sh $(basename $file)
     echo done
 done
