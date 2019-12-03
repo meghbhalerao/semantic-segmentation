@@ -21,13 +21,19 @@ for patient in patient_train_list:
                          train_path + patient + '/' + patient + "_flair_bfc.nii.gz",
                          train_path + patient + '/' + patient + "_seg.nii.gz"])
 #This part of the code splits the entire data into 5 folds randomly and creates 10 csvs as given in the description
+#This is valid only for 5 fold cross validation 
 df = pd.read_csv("train.csv")
 df = df.sample(frac = 1)
-df1 = df.iloc[0:67, :]
-df2 = df.iloc[67:134, :]
-df3 = df.iloc[134:201, :]
-df4 = df.iloc[201:268, :]
-df5 = df.iloc[268:335, :]
+shp = df.shape
+n = shp[0]
+e = n%5
+n = n + 5 - e
+print(n)
+df1 = df.iloc[0:n/5, :]
+df2 = df.iloc[n/5:2*n/5, :]
+df3 = df.iloc[2*n/5:3*n/5, :]
+df4 = df.iloc[3*n/5:4*n/5, :]
+df5 = df.iloc[4*n/5:n-(5-e), :]
 df_t1 = pd.concat((df2,df3,df4, df5))
 df_v1 = df1
 df_t2 = pd.concat((df1,df3,df4,df5))
