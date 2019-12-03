@@ -27,4 +27,4 @@ Again, ideally, the documentation of this entire repo is written under the assum
 22. Once you have understood how the 5 segmentations from the 5 folds are generated, now we can fuse all the 5 segmentations using majority voting. 
 23. Change the `path` variable to the path to the folder `stored_outputs_test` and the `save_path` variable to the folder where you want to store the final segmentations.
 24. Once you have made these changes run the `majority_voting.sh` script which runs the `majority_voting.py` file. 
-25. Running this script will combine the predictions of the 5 folds using majority voting and save them accoring to the paths mentioned 
+25. Running this script will combine the predictions of the 5 folds using majority voting and save them according to the paths mentioned 
