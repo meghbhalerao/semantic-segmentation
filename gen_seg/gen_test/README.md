@@ -25,6 +25,6 @@ Again, ideally, the documentation of this entire repo is written under the assum
 20. Further details of the memory requirements can be found in either of the `submit_single*.sh` scripts.
 21. For further details on how and where the predicted segmentations are stored (of each fold) please `cd` into the `stored_outputs_*` folder under `gen_seg`
 22. Once you have understood how the 5 segmentations from the 5 folds are generated, now we can fuse all the 5 segmentations using majority voting. 
-23. Open the `majority_voting.sh` and change the `path` variable to the path to the folder `stored_outputs_test` and the `save_path` variable to the folder where you want to store the final segmentations.
+23. Open the `majority_voting.py` and change the `path` variable to the path to the folder `stored_outputs_test` and the `save_path` variable to the folder where you want to store the final segmentations.
 24. Once you have made these changes run the `majority_voting.sh` script which runs the `majority_voting.py` file. 
 25. Running this script will combine the predictions of the 5 folds using majority voting and save them according to the paths mentioned 
