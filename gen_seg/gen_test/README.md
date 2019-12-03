@@ -16,7 +16,7 @@ Again, ideally, the documentation of this entire repo is written under the assum
 8. Now we have to set the last parameter which is the `model_path*`.
 9. The `model_pathx` where x is from 1-5, is the model path to the best model of each fold (since we save `save_best` - which is usually 5 in all our exps)
 10. As mentioned earlier, the models are saved as `.pt` files, so the `model_path*` will end with `modxxx.pt`.
-11. Now, let's get to how exactly choosing the path to the model (weight) file. 
+11. Now, let's get to how to exactly choose the path to the model (weight) file. 
 12. So, once you run the model for whatever number of epochs (by submitting the training scripts to the cluster as mentioned here : https://github.com/meghbhalerao/Semantic_Segmentation/tree/master/submission_scripts), the stdout and stderr files are generated with the names like $jobname.o$jobid and $jobname.e$jobid respectively.
 13. You need to look manually into each of the stdout files (corresponding to each fold) to find at which epoch did the best validation-during-training loss occur and the model saved at this epoch is considered to be the 'best model' that we have been talking about before.
 14. So, once you open (or cat) either of the stdout files, at the bottom of the file you can see clearly mentioned the best 5 valdation epochs.
