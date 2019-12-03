@@ -82,5 +82,5 @@ seg_new = seg_new[0:240, 0:240, 0:155]
 
 seg_new = nib.Nifti1Image(seg_new, aff)
 
-nib.save(seg_new, save_path + patient_name +"/"+ patient_name + "5.nii.gz")
+nib.save(seg_new, save_path + patient_name + "5.nii.gz")
 
