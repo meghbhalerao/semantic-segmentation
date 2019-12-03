@@ -7,7 +7,7 @@ Again, ideally, the documentation of this entire repo is written under the assum
 4. The `seg_single_model*.py` needs to be edited with proper paths to generate the segmentations correctly.
 5. Open the `seg_single_model*.py` files.
 6. Set the `data_path` variable to the path where the testing preprocessed data is present (don't forget the forward slash after the path)
-7. Set the `save_path` to the path where you want to save the segmentations of the individual folds. Let us call this `stored_outputs_test`.
+7. Set the `save_path` to the path where you want to save the segmentations of the individual folds. Let us call this folder `stored_outputs_test`.
 
 **TODO : MAKE LOG FILES LEGIBLE**
 
