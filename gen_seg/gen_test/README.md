@@ -1,5 +1,7 @@
 # How are the segmentations generated on unknown data?
-Again, ideally, the documentation of this entire repo is written under the assumption that the user is working on a SGE based HPC cluster.
+Again, ideally, the documentation of this entire repo is written under the assumption that the user is working on a SGE based HPC cluster. 
+
+Also, additionally , it is always a good practice to **avoid storing stuff other than codes/scripts in github repo**. Doing this avoids problems in version control. 
 
 1. This is the folder you want to `cd` into when you want to generate tumor segmentations for the testing datset (preprocessed).
 2. The segmentation is generated using 5 models (which are trained using 5 fold cross validation), by first individually generating predictions of each model and then combining them using majority voting.
