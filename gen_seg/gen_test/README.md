@@ -7,9 +7,12 @@ Again, ideally, the documentation of this entire repo is written under the assum
 4. The `seg_single_model*.py` needs to be edited with proper paths to generate the segmentations correctly.
 5. Open the `seg_single_model*.py` files.
 6. Set the `data_path` variable to the path where the testing preprocessed data is present (don't forget the forward slash after the path)
-7. Set the `save_path` to the path to the `stored_outputs_test` folder (wherever it may be present) - **TODO : ADD SUPPORT IN SCRIPT**
+7. Set the `save_path` to the path where you want to save the segmentations of the individual folds. Let us call this `stored_outputs_test`.
+
 **TODO : MAKE LOG FILES LEGIBLE**
+
 **TODO:VERBOSE OPTION IN LOG FILES AND TRAIN PARAMATERS AS A COMMAND LINE ARG**
+
 8. Now we have to set the last parameter which is the `model_path*`.
 9. The `model_pathx` where x is from 1-5, is the model path to the best model of each fold (since we save `save_best` - which is usually 5 in all our exps)
 10. As mentioned earlier, the models are saved as `.pt` files, so the `model_path*` will end with `modxxx.pt`.
