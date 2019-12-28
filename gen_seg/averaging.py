@@ -14,12 +14,12 @@ def convert_to_3D(seg):
 
 patient_list = os.listdir(path)
 for patient in patient_list:
-    seg1 = nib.load(path + patient + "/" + patient + "1.nii.gz").get_fdata()
-    seg2 = nib.load(path + patient + "/" + patient + "2.nii.gz").get_fdata()
-    seg3 = nib.load(path + patient + "/" + patient + "3.nii.gz").get_fdata()
-    seg4 = nib.load(path + patient + "/" + patient + "4.nii.gz").get_fdata()
-    seg5 = nib.load(path + patient + "/" + patient + "5.nii.gz").get_fdata()
-    aff = nib.load(path + patient + "/" + patient + "1.nii.gz").affine
+    seg1 = nib.load(path + patient + "1.nii.gz").get_fdata()
+    seg2 = nib.load(path + patient + "2.nii.gz").get_fdata()
+    seg3 = nib.load(path + patient + "3.nii.gz").get_fdata()
+    seg4 = nib.load(path + patient + "4.nii.gz").get_fdata()
+    seg5 = nib.load(path + patient + "5.nii.gz").get_fdata()
+    aff = nib.load(path + patient + "1.nii.gz").affine
     seg = seg1 + seg2 + seg3 + seg4 + seg5
     seg = (seg>2.5).astype(int)
     seg = convert_to_3D(seg)    
